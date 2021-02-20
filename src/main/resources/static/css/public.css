@@ -15,6 +15,10 @@ header .content {
     align-items: center;
 }
 
+header .content .layui-nav .layui-nav-item a {
+    color: #2E2D3C;
+}
+
 header .logo {
     font-family: Jokerman, cursive;
     font-size: 22px;
@@ -25,24 +29,6 @@ header .logo {
 header {
     position: relative;
     box-shadow: inset 0 -1px 0 #e1e1e1;
-}
-
-ol, ul {
-    list-style: none;
-}
-
-header ul {
-    display: flex;
-}
-
-header ul li {
-    margin-left: 18px;
-}
-
-header ul li a {
-    color: #2c2c3b;
-    font-size: 20px;
-    font-weight: 300;
 }
 
 body {
@@ -72,4 +58,29 @@ footer {
 .aside {
     width: 27%;
     float: right;
+}
+
+.description {
+    line-height: 25px;
+    font-size: 14px;
+    color: #666;
+}
+
+.title {
+    font-size: 22px;
+    color: #3e3b3f;
+    position: relative;
+    box-shadow: 0 0 1px transparent;
+}
+
+.date {
+    text-align: right;
+    margin-left: 60px;
+    font-size: 13px;
+    line-height: 12px;
+    color: #666;
+}
+
+#article-page {
+    text-align: center;
 }

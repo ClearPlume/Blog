@@ -7,63 +7,263 @@
         <link rel="shortcut icon" th:href="@{/favicon.jpg}"/>
         <link rel="stylesheet" th:href="@{/css/public.css}">
         <link rel="stylesheet" th:href="@{/layui/css/layui.css}">
+        <link rel="stylesheet" th:href="@{/layui/css/modules/layer/default/layer.css}">
 
-        <script type="text/javascript" th:src="@{/layui/layui.all.js}"></script>
+        <script type="text/javascript" th:src="@{/layui/layui.js}"></script>
+        <script type="text/javascript" th:src="@{/layui/lay/modules/layer.js}"></script>
     </head>
     <body>
         <header>
             <div class="content">
                 <a th:href="@{/}" class="logo">FallenAngel</a>
                 <nav>
-                    <ul>
-                        <li><a th:href="@{/}" title="首页">首页</a></li>
-                        <li><a th:href="@{/}" title="归档">归档</a></li>
-                        <li><a th:href="@{/}" title="标签">标签</a></li>
-                        <li><a th:href="@{/}" title="关于">关于</a></li>
-                        <li><a th:href="@{/}" title="留言">留言</a></li>
+                    <ul class="layui-nav" style="background-color: #ffffff">
+                        <li class="layui-nav-item layui-this"><a th:href="@{/}" title="首页">首页</a></li>
+                        <li class="layui-nav-item"><a th:href="@{/archive}" title="归档">归档</a></li>
+                        <li class="layui-nav-item"><a th:href="@{/tags}" title="标签">标签</a></li>
+                        <li class="layui-nav-item"><a th:href="@{/about}" title="关于">关于</a></li>
+                        <li class="layui-nav-item"><a th:href="@{/message}" title="留言">留言</a></li>
                     </ul>
                 </nav>
             </div>
         </header>
+
+        <!-- container start -->
         <div class="container">
+            <!-- content start -->
             <div class="content">
+                <!-- main start -->
                 <div class="main">
                     <div class="list">
+                        <article>
+                            <h1>
+                                <a class="title" href="javascript:void(0)" title="博客标题">
+                                    博客标题
+                                </a>
+                            </h1>
+                            <p class="description">
+                                博客概要
+                            </p>
+                            <p>
+                                <a href="javascript:void(0)" title="Read More"><span>➥</span>Read More</a>
+                            </p>
+                            <p class="date">
+                                <span>posted @</span>
+                                <time>2021-02-20</time>
+                                <span>评论(0)</span>
+                            </p>
+                        </article>
+                        <article>
+                            <h1>
+                                <a class="title" href="javascript:void(0)" title="博客标题">
+                                    博客标题
+                                </a>
+                            </h1>
+                            <p class="description">
+                                博客概要
+                            </p>
+                            <p>
+                                <a href="javascript:void(0)" title="Read More"><span>➥</span>Read More</a>
+                            </p>
+                            <p class="date">
+                                <span>posted @</span>
+                                <time>2021-02-20</time>
+                                <span>评论(0)</span>
+                            </p>
+                        </article>
+                        <article>
+                            <h1>
+                                <a class="title" href="javascript:void(0)" title="博客标题">
+                                    博客标题
+                                </a>
+                            </h1>
+                            <p class="description">
+                                博客概要
+                            </p>
+                            <p>
+                                <a href="javascript:void(0)" title="Read More"><span>➥</span>Read More</a>
+                            </p>
+                            <p class="date">
+                                <span>posted @</span>
+                                <time>2021-02-20</time>
+                                <span>评论(0)</span>
+                            </p>
+                        </article>
+                        <article>
+                            <h1>
+                                <a class="title" href="javascript:void(0)" title="博客标题">
+                                    博客标题
+                                </a>
+                            </h1>
+                            <p class="description">
+                                博客概要
+                            </p>
+                            <p>
+                                <a href="javascript:void(0)" title="Read More"><span>➥</span>Read More</a>
+                            </p>
+                            <p class="date">
+                                <span>posted @</span>
+                                <time>2021-02-20</time>
+                                <span>评论(0)</span>
+                            </p>
+                        </article>
+                        <article>
+                            <h1>
+                                <a class="title" href="javascript:void(0)" title="博客标题">
+                                    博客标题
+                                </a>
+                            </h1>
+                            <p class="description">
+                                博客概要
+                            </p>
+                            <p>
+                                <a href="javascript:void(0)" title="Read More"><span>➥</span>Read More</a>
+                            </p>
+                            <p class="date">
+                                <span>posted @</span>
+                                <time>2021-02-20</time>
+                                <span>评论(0)</span>
+                            </p>
+                        </article>
+                        <article>
+                            <h1>
+                                <a class="title" href="javascript:void(0)" title="博客标题">
+                                    博客标题
+                                </a>
+                            </h1>
+                            <p class="description">
+                                博客概要
+                            </p>
+                            <p>
+                                <a href="javascript:void(0)" title="Read More"><span>➥</span>Read More</a>
+                            </p>
+                            <p class="date">
+                                <span>posted @</span>
+                                <time>2021-02-20</time>
+                                <span>评论(0)</span>
+                            </p>
+                        </article>
+                        <article>
+                            <h1>
+                                <a class="title" href="javascript:void(0)" title="博客标题">
+                                    博客标题
+                                </a>
+                            </h1>
+                            <p class="description">
+                                博客概要
+                            </p>
+                            <p>
+                                <a href="javascript:void(0)" title="Read More"><span>➥</span>Read More</a>
+                            </p>
+                            <p class="date">
+                                <span>posted @</span>
+                                <time>2021-02-20</time>
+                                <span>评论(0)</span>
+                            </p>
+                        </article>
+                        <article>
+                            <h1>
+                                <a class="title" href="javascript:void(0)" title="博客标题">
+                                    博客标题
+                                </a>
+                            </h1>
+                            <p class="description">
+                                博客概要
+                            </p>
+                            <p>
+                                <a href="javascript:void(0)" title="Read More"><span>➥</span>Read More</a>
+                            </p>
+                            <p class="date">
+                                <span>posted @</span>
+                                <time>2021-02-20</time>
+                                <span>评论(0)</span>
+                            </p>
+                        </article>
+                        <article>
+                            <h1>
+                                <a class="title" href="javascript:void(0)" title="博客标题">
+                                    博客标题
+                                </a>
+                            </h1>
+                            <p class="description">
+                                博客概要
+                            </p>
+                            <p>
+                                <a href="javascript:void(0)" title="Read More"><span>➥</span>Read More</a>
+                            </p>
+                            <p class="date">
+                                <span>posted @</span>
+                                <time>2021-02-20</time>
+                                <span>评论(0)</span>
+                            </p>
+                        </article>
+                        <article>
+                            <h1>
+                                <a class="title" href="javascript:void(0)" title="博客标题">
+                                    博客标题
+                                </a>
+                            </h1>
+                            <p class="description">
+                                博客概要
+                            </p>
+                            <p>
+                                <a href="javascript:void(0)" title="Read More"><span>➥</span>Read More</a>
+                            </p>
+                            <p class="date">
+                                <span>posted @</span>
+                                <time>2021-02-20</time>
+                                <span>评论(0)</span>
+                            </p>
+                        </article>
                     </div>
-                    <div class="page">
-                    </div>
-                </div>
+                    <div id="article-page"></div>
+                </div><!-- main end -->
+
+                <!-- aside start -->
                 <aside class="aside">
-                    <div class="about">
-                        <h4 class="aside-about-tit">About FallenAngel</h4>
-                        <article class="aside-about-art">
+                    <div class="about layui-text" style="margin-bottom: 20px">
+                        <h2 style="font-weight: normal">About FallenAngel</h2>
+                        <hr>
+                        <article>
                             <p>Java Programmer，Java 开发工程师</p>
                             <p>目标是成为一名Java 开发工程师，完成以前选择的目标。</p>
                             <p>专注后端技术，关注优美的代码，擅长逻辑分析。</p>
                             <p>但并不擅长美术相关，所以...这个网站就长这样了。</p>
                             <p>坚持学习最新的技术，学习最前沿的开发理念。</p>
+                            <p><a th:href="@{/about}"><span>➥</span>More</a></p>
                         </article>
-                        <p class="v-more-right">
-                            <a href="/about.html"><span>➥</span>More</a>
-                        </p>
                     </div>
-                    <div class="link">
-                        <h4 class="v-section-tit">My Links</h4>
-                        <article class="attent-det">
+                    <div class="link layui-text">
+                        <h2>My Links</h2>
+                        <hr>
+                        <article>
                             <ul>
-                                <li><a href="https://github.com/wenzi0github" target="_blank" title="my github"><span>GitHub</span></a>
+                                <li>
+                                    <a href="https://github.com/ClearPlume" target="_blank" title="My Github"><span>GitHub</span></a>
                                 </li>
                             </ul>
                         </article>
                     </div>
-                </aside>
-            </div>
-        </div>
+                </aside><!-- aside end -->
+            </div><!-- content end -->
+        </div><!-- container end -->
+
         <footer>
             <p>© 坠天使的博客 2021</p>
         </footer>
 
         <script type="text/javascript">
+            layui.use(['element', 'laypage', 'layer'], function () {
+                let laypage = layui.laypage
+
+                laypage.render({
+                    elem: 'article-page',
+                    count: 70,
+                    jump: function (obj) {
+                        alert(`当前显示第 ${obj.curr} 页博客`)
+                    }
+                })
+            })
         </script>
     </body>
 </html>

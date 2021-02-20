@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="zh" xmlns:th="http://www.thymeleaf.org">
+    <head>
+        <meta charset="UTF-8">
+        <title>关于-坠天使-个人博客</title>
+
+        <link rel="shortcut icon" th:href="@{/favicon.jpg}"/>
+        <link rel="stylesheet" th:href="@{/css/public.css}">
+        <link rel="stylesheet" th:href="@{/layui/css/layui.css}">
+
+        <script type="text/javascript" th:src="@{/layui/layui.js}"></script>
+    </head>
+    <body>
+        <header>
+            <div class="content">
+                <a th:href="@{/}" class="logo">FallenAngel</a>
+                <nav>
+                    <ul class="layui-nav" style="background-color: #ffffff">
+                        <li class="layui-nav-item"><a th:href="@{/}" title="首页">首页</a></li>
+                        <li class="layui-nav-item"><a th:href="@{/archive}" title="归档">归档</a></li>
+                        <li class="layui-nav-item"><a th:href="@{/tags}" title="标签">标签</a></li>
+                        <li class="layui-nav-item layui-this"><a th:href="@{/about}" title="关于">关于</a></li>
+                        <li class="layui-nav-item"><a th:href="@{/message}" title="留言">留言</a></li>
+                    </ul>
+                </nav>
+            </div>
+        </header>
+
+        <!-- container start -->
+        <div class="container">
+            <!-- content start -->
+            <div class="content">
+                这里是有关我的一些简介、规划、目标之类的东西，暂时不知道写啥
+            </div><!-- content end -->
+        </div><!-- container end -->
+
+        <script type="text/javascript">
+            layui.use(['element'])
+        </script>
+    </body>
+</html>

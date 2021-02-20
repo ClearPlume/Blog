@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="zh" xmlns:th="http://www.thymeleaf.org">
+    <head>
+        <meta charset="UTF-8">
+        <title>归档-坠天使-个人博客</title>
+
+        <link rel="shortcut icon" th:href="@{/favicon.jpg}"/>
+        <link rel="stylesheet" th:href="@{/css/public.css}">
+        <link rel="stylesheet" th:href="@{/layui/css/layui.css}">
+
+        <script type="text/javascript" th:src="@{/layui/layui.js}"></script>
+    </head>
+    <body>
+        <header>
+            <div class="content">
+                <a th:href="@{/}" class="logo">FallenAngel</a>
+                <nav>
+                    <ul class="layui-nav" style="background-color: #ffffff">
+                        <li class="layui-nav-item"><a th:href="@{/}" title="首页">首页</a></li>
+                        <li class="layui-nav-item layui-this"><a th:href="@{/archive}" title="归档">归档</a></li>
+                        <li class="layui-nav-item"><a th:href="@{/tags}" title="标签">标签</a></li>
+                        <li class="layui-nav-item"><a th:href="@{/about}" title="关于">关于</a></li>
+                        <li class="layui-nav-item"><a th:href="@{/message}" title="留言">留言</a></li>
+                    </ul>
+                </nav>
+            </div>
+        </header>
+
+        <!-- container start -->
+        <div class="container">
+            <!-- content start -->
+            <div class="content">
+                <ul class="layui-timeline">
+                    <!-- 每一年 -->
+                    <li class="layui-timeline-item">
+                        <i class="layui-icon layui-timeline-axis" style="padding-top: 7px">&#xe602;</i>
+                        <div class="layui-timeline-content">
+                            <div class="layui-timeline-title" style="font-size: 30px">2022</div>
+                            <!-- 以天为单位的每一篇文章 -->
+                            <div class="layui-timeline-content layui-text"
+                                 style="display: flex; align-items: center">
+                                <h3 style="display: inline-block; margin-right: 15px">02-20</h3>
+                                <p style="display: inline-block">暂时还没有博客，先把静态样式写出来</p>
+                            </div>
+                            <div class="layui-timeline-content layui-text"
+                                 style="display: flex; align-items: center">
+                                <h3 style="display: inline-block; margin-right: 15px">02-20</h3>
+                                <p style="display: inline-block">暂时还没有博客，先把静态样式写出来</p>
+                            </div>
+                            <div class="layui-timeline-content layui-text"
+                                 style="display: flex; align-items: center">
+                                <h3 style="display: inline-block; margin-right: 15px">02-20</h3>
+                                <p style="display: inline-block">暂时还没有博客，先把静态样式写出来</p>
+                            </div>
+                        </div>
+                    </li>
+                    <!-- 每一年 -->
+                    <li class="layui-timeline-item">
+                        <i class="layui-icon layui-timeline-axis" style="padding-top: 7px">&#xe602;</i>
+                        <div class="layui-timeline-content">
+                            <div class="layui-timeline-title" style="font-size: 30px">2021</div>
+                            <!-- 以天为单位的每一篇文章 -->
+                            <div class="layui-timeline-content layui-text"
+                                 style="display: flex; align-items: center">
+                                <h3 style="display: inline-block; margin-right: 15px">02-20</h3>
+                                <p style="display: inline-block">暂时还没有博客，先把静态样式写出来</p>
+                            </div>
+                            <div class="layui-timeline-content layui-text"
+                                 style="display: flex; align-items: center">
+                                <h3 style="display: inline-block; margin-right: 15px">02-20</h3>
+                                <p style="display: inline-block">暂时还没有博客，先把静态样式写出来</p>
+                            </div>
+                            <div class="layui-timeline-content layui-text"
+                                 style="display: flex; align-items: center">
+                                <h3 style="display: inline-block; margin-right: 15px">02-20</h3>
+                                <p style="display: inline-block">暂时还没有博客，先把静态样式写出来</p>
+                            </div>
+                            <div class="layui-timeline-content layui-text"
+                                 style="display: flex; align-items: center">
+                                <h3 style="display: inline-block; margin-right: 15px">02-19</h3>
+                                <p style="display: inline-block">我的博客跑起来了</p>
+                            </div>
+                        </div>
+                    </li>
+                    <!-- 博客的起始 -->
+                    <li class="layui-timeline-item">
+                        <i class="layui-icon layui-timeline-axis">&#xe63f;</i>
+                        <div class="layui-timeline-content layui-text">
+                            <div class="layui-timeline-title">一切的起始</div>
+                        </div>
+                    </li>
+                </ul>
+            </div><!-- content end -->
+        </div><!-- container end -->
+
+        <footer>
+            <p>© 坠天使的博客 2021</p>
+        </footer>
+
+        <script type="text/javascript">
+            layui.use(['element'])
+        </script>
+    </body>
+</html>
