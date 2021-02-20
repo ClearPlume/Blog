@@ -1,0 +1,75 @@
+.content {
+    width: 1080px;
+    margin: 0 auto;
+}
+
+a {
+    text-decoration: none;
+    outline: none;
+}
+
+header .content {
+    display: flex;
+    height: 75px;
+    justify-content: space-between;
+    align-items: center;
+}
+
+header .logo {
+    font-family: Jokerman, cursive;
+    font-size: 22px;
+    font-weight: lighter;
+    color: #4d444f;
+}
+
+header {
+    position: relative;
+    box-shadow: inset 0 -1px 0 #e1e1e1;
+}
+
+ol, ul {
+    list-style: none;
+}
+
+header ul {
+    display: flex;
+}
+
+header ul li {
+    margin-left: 18px;
+}
+
+header ul li a {
+    color: #2c2c3b;
+    font-size: 20px;
+    font-weight: 300;
+}
+
+body {
+    margin: 0;
+    padding: 0;
+}
+
+footer {
+    margin: 20px 0;
+    text-align: center;
+    font-size: 15px;
+}
+
+.container {
+    margin-top: 20px;
+}
+
+.container .content {
+    display: flex;
+    justify-content: space-between;
+}
+
+.main {
+    width: 71%;
+}
+
+.aside {
+    width: 27%;
+    float: right;
+}
