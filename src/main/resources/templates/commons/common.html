@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="zh" xmlns:th="http://www.thymeleaf.org">
     <!--suppress HtmlRequiredTitleElement -->
-    <head th:fragment="head(title, links, scripts)">
+    <head th:fragment="head(title, style, links, scripts)">
         <meta charset="UTF-8"/>
         <title th:replace="${title}"></title>
 
@@ -10,6 +10,8 @@
         <link rel="stylesheet" th:href="@{/layui/css/layui.css}">
         <link rel="stylesheet" th:href="@{/layui/css/modules/layer/default/layer.css}">
         <th:block th:replace="${links}"/>
+
+        <style th:replace="${style}"></style>
 
         <script type="text/javascript" th:src="@{/js/jquery.js}"></script>
         <script type="text/javascript" th:src="@{/layui/layui.js}"></script>
@@ -23,11 +25,11 @@
             <nav>
                 <ul id="header-menu" class="layui-nav" style="background-color: #ffffff">
                     <li class="layui-nav-item"><a th:href="@{/}" title="首页">首页</a></li>
-                    <li class="layui-nav-item"><a th:href="@{/archive}" title="归档">归档</a></li>
+                    <li class="layui-nav-item"><a th:href="@{/document}" title="文档">文档</a></li>
                     <li class="layui-nav-item"><a th:href="@{/tags}" title="标签">标签</a></li>
-                    <li class="layui-nav-item"><a th:href="@{/about}" title="关于">关于</a></li>
+                    <li class="layui-nav-item"><a th:href="@{/archive}" title="归档">归档</a></li>
                     <li class="layui-nav-item"><a th:href="@{/message}" title="留言">留言</a></li>
-                    <li class="layui-nav-item"><a th:href="@{/editor}" title="文本编辑">文本编辑</a></li>
+                    <li class="layui-nav-item"><a th:href="@{/about}" title="关于">关于</a></li>
                 </ul>
             </nav>
         </div>
@@ -39,8 +41,8 @@
 
     <script th:fragment="header_js" type="text/javascript">
         $(function () {
-            let page = location.pathname;
-            let curTab = $("#header-menu").find(`a[href="${page}"]`);
+            let path = location.pathname;
+            let curTab = $("#header-menu").find(`a[href="${path}"]`);
             curTab.parent().addClass("layui-this");
         })
     </script>

@@ -37,7 +37,6 @@ body {
 }
 
 footer {
-    margin: 20px 0;
     text-align: center;
     font-size: 15px;
 }
@@ -52,12 +51,7 @@ footer {
 }
 
 .main {
-    width: 71%;
-}
-
-.aside {
-    width: 27%;
-    float: right;
+    width: 98%;
 }
 
 .description {

@@ -1,7 +1,18 @@
 <!DOCTYPE html>
 <html lang="zh" xmlns:th="http://www.thymeleaf.org">
-    <head th:replace="commons/common :: head(~{::title}, ~{}, ~{})">
+    <head th:replace="commons/common :: head(~{::title}, ~{::style}, ~{}, ~{})">
         <title>首页-坠天使-个人博客</title>
+
+        <style>
+            .main {
+                width: 71%;
+            }
+
+            .aside {
+                width: 27%;
+                float: right;
+            }
+        </style>
     </head>
     <body>
         <header th:replace="commons/common :: header"></header>
@@ -157,44 +168,8 @@
                                 <span>评论(0)</span>
                             </p>
                         </article>
-                        <article>
-                            <h1>
-                                <a class="title" href="javascript:void(0)" title="博客标题">
-                                    博客标题
-                                </a>
-                            </h1>
-                            <p class="description">
-                                博客概要
-                            </p>
-                            <p>
-                                <a href="javascript:void(0)" title="Read More"><span>➥</span>Read More</a>
-                            </p>
-                            <p class="date">
-                                <span>posted @</span>
-                                <time>2021-02-20</time>
-                                <span>评论(0)</span>
-                            </p>
-                        </article>
-                        <article>
-                            <h1>
-                                <a class="title" href="javascript:void(0)" title="博客标题">
-                                    博客标题
-                                </a>
-                            </h1>
-                            <p class="description">
-                                博客概要
-                            </p>
-                            <p>
-                                <a href="javascript:void(0)" title="Read More"><span>➥</span>Read More</a>
-                            </p>
-                            <p class="date">
-                                <span>posted @</span>
-                                <time>2021-02-20</time>
-                                <span>评论(0)</span>
-                            </p>
-                        </article>
                     </div>
-                    <div id="article-page"></div>
+                    <div id="article-page" style="margin-top: 10px"></div>
                 </div><!-- main end -->
 
                 <!-- aside start -->
@@ -203,11 +178,18 @@
                         <h2 style="font-weight: normal">About FallenAngel</h2>
                         <hr>
                         <article>
-                            <p>Java Programmer，Java 开发工程师</p>
-                            <p>目标是成为一名Java 开发工程师，完成以前选择的目标。</p>
-                            <p>专注后端技术，关注优美的代码，擅长逻辑分析。</p>
-                            <p>但并不擅长美术相关，所以...这个网站就长这样了。</p>
-                            <p>坚持学习最新的技术，学习最前沿的开发理念。</p>
+                            <p style="margin-bottom: 10px">Java Programmer，Java 开发工程师</p>
+                            <p>
+                                我的目标是成为一名Java 开发工程师，完成以前接触编程时定下的第二目标。
+                            </p>
+                            <p>为什么不是第一？因为第一目标是手机游戏【选择编程语言时百度对比的结果是Java，看到C++就能睡着】，却在工作时最终发现游戏永远绕不开C++。</p>
+                            <p>专注后端技术，喜欢写代码(有点强迫症)，擅长逻辑分析。</p>
+                            <p>
+                                于是很合乎情理的，审美方面的天负从来达不到0，所以...这个网站就长现在这个样子了(参考了
+                                <a href="https://www.xiabingbao.com/" target="_blank">蚊子的前端博客</a>
+                                )。
+                            </p>
+                            <p>坚持学习最新的技术，努力跟上最前沿的开发理念。</p>
                             <p><a th:href="@{/about}"><span>➥</span>More</a></p>
                         </article>
                     </div>
@@ -235,6 +217,7 @@
 
                     laypage.render({
                         elem: 'article-page',
+                        limit: 8,
                         count: 70,
                         jump: function (obj) {
                             console.log(`当前显示第 ${obj.curr} 页博客`);

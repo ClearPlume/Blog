@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="zh" xmlns:th="http://www.thymeleaf.org">
+    <head th:replace="commons/common :: head(~{::title}, ~{}, ~{::link}, ~{::script})">
+        <title>文档-坠天使-个人博客</title>
+
+        <link rel="stylesheet" th:href="@{/editormd/css/editormd.css}">
+
+        <script type="text/javascript" th:src="@{/editormd/editormd.js}"></script>
+    </head>
+    <body>
+        <header th:replace="commons/common :: header"></header>
+
+        <!-- container start -->
+        <div class="container">
+            <!-- content start -->
+            <div class="content" style="width: 75%;">
+                <!-- main start -->
+                <div class="main">
+                    <form th:action="@{/document/newArticle}" method="post">
+                        <div class="layui-btn-group" style="margin-bottom: 10px">
+                            <button id="upload-editor-btn" class="layui-btn layui-btn-primary" type="submit">保存</button>
+                        </div>
+                        <div id="editor"></div>
+                    </form>
+                </div><!-- main end -->
+            </div><!-- content end -->
+        </div><!-- container end -->
+
+        <footer th:replace="commons/common :: footer"></footer>
+
+        <script type="text/javascript">
+            $(function () {
+                editormd("editor", {
+                    height: "600px",
+
+                    placeholder: "请开始你的表演～",
+
+                    emoji: true,
+
+                    imageUpload: true,
+                    imageFormats: ["jpg", "jpeg", "gif", "png", "bmp"],
+                    imageUploadURL: "",
+
+                    path: "editormd/lib/"
+                });
+            });
+        </script>
+
+        <script th:replace="commons/common :: header_js"></script>
+
+        <script th:replace="commons/common :: common_js"></script>
+    </body>
+</html>
