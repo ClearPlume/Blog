@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html lang="zh" xmlns:th="http://www.thymeleaf.org">
+    <head th:replace="commons/common :: head(~{::title}, ~{}, ~{::link}, ~{::src})">
+        <title>文档-坠天使-个人博客</title>
+
+        <link rel="stylesheet" th:href="@{/editormd/css/editormd.css}">
+
+        <script th:fragment="src" type="text/javascript" th:src="@{/editormd/editormd.js}"></script>
+    </head>
+    <body>
+        <header th:replace="commons/common :: header"></header>
+
+        <!-- container start -->
+        <div class="container">
+            <!-- content start -->
+            <div class="content" style="width: 80%;">
+                <!-- main start -->
+                <div class="main">
+                    <div id="article"></div>
+                    <form id="form-article" class="layui-form" th:action="@{/article/newArticle}" method="post">
+                        <div class="layui-form-item">
+                            <label>
+                                <input type="text" name="article-name" placeholder="请输入文章标题（5～30个字）" autocomplete="off"
+                                       class="layui-input layui-input-inline" style="width: 85%; margin-right: 23px">
+                            </label>
+                            <button id="btn-save" class="layui-btn layui-btn-radius layui-btn-primary" type="button">
+                                保存草稿
+                            </button>
+                            <button id="btn-publish" class="layui-btn layui-btn-radius layui-btn-normal" type="button"
+                                    style="margin-right: 0">
+                                发布文章
+                            </button>
+                        </div>
+                        <div id="editor"></div>
+                    </form>
+                </div><!-- main end -->
+            </div><!-- content end -->
+        </div><!-- container end -->
+
+        <footer th:replace="commons/common :: footer"></footer>
+
+        <script type="text/javascript">
+            $(function () {
+                editormd("editor", {
+                    height: "600px",
+                    placeholder: "请开始你的表演～",
+
+                    emoji: true,
+                    tocm: true,
+
+                    imageUpload: true,
+                    imageFormats: ["jpg", "jpeg", "gif", "png", "bmp"],
+                    imageUploadURL: "",
+
+                    toolbarIconsClass: {
+                        "first-line-indent": "fa-long-arrow-right"
+                    },
+                    toolbarHandlers: {
+                        "first-line-indent": function (cm) {
+                            cm.replaceSelection("&emsp;&emsp;");
+                        }
+                    },
+                    toolbarIcons: function () {
+                        return [
+                            "undo", "redo", "|",
+                            "bold", "del", "italic", "quote", "ucwords", "uppercase", "lowercase", "|",
+                            "h1", "h2", "h3", "h4", "h5", "h6", "|",
+                            "first-line-indent", "|",
+                            "list-ul", "list-ol", "hr", "|",
+                            "link", "reference-link", "image", "code", "preformatted-text", "code-block", "table", "datetime", "emoji", "html-entities", "pagebreak", "|",
+                            "goto-line", "watch", "preview", "fullscreen", "clear", "search", "|",
+                            "help", "info"
+                        ];
+                    },
+                    lang: {
+                        toolbar: {
+                            "first-line-indent": "插入中文空格"
+                        }
+                    },
+                    path: "editormd/lib/"
+                });
+
+                $("#btn-save").click(function () {
+                    submit(false);
+                });
+
+                $("#btn-publish").click(function () {
+                    submit(true);
+                });
+            });
+
+            /**
+             * 提交文章
+             *
+             * @param {boolean} isPublish 是否在提交文章时直接发布
+             */
+            function submit(isPublish) {
+                let article = $("#editor").children("textarea[name='editor-markdown-doc']");
+                let articleName = $(":input[name='article-name']");
+
+                if (article.val().trim() === "" || articleName.val().trim() === "") {
+                    layer.msg("<span style='color: red'>文章标题</span>和<span style='color: red'>内容</span>不可为空，请检查！", {
+                        offset: "35%",
+                        icon: 2,
+                        anim: 6
+                    });
+                    return;
+                }
+
+                let articleData = $("#form-article").serializeArray();
+                let articleJSON = "{";
+
+                articleData.forEach(function (value) {
+                    articleJSON += `"${value.name}": "${encodeURIComponent(value.value)}", `;
+                });
+                articleJSON += `"published": ${isPublish}`;
+
+                articleJSON += "}";
+
+                $.ajax("article/newArticle", {
+                    type: "post",
+                    contentType: "application/json",
+                    data: articleJSON,
+                    dataType: "json",
+
+                    success: function (msg) {
+                        if (msg.code === 200) {
+                            let article = msg.data;
+
+                            editormd.markdownToHTML("article", {
+                                markdown: decodeURIComponent(article.content),
+                            });
+                        }
+                    }
+                });
+            }
+        </script>
+
+        <script th:replace="commons/common :: header_js"></script>
+
+        <script th:replace="commons/common :: common_js"></script>
+    </body>
+</html>
