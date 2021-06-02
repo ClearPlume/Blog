@@ -17,12 +17,16 @@ public class ArticleEntity {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id;
 
-    @Column(name = "title", length = 30)
+    @ManyToOne
+    @JoinColumn(name = "special_id", foreignKey = @ForeignKey(ConstraintMode.NO_CONSTRAINT))
+    private SpecialEntity special;
+
+    @Column(name = "title", nullable = false, length = 30)
     private String title;
 
-    @Column(name = "content", length = 10000)
+    @Column(name = "content", nullable = false, length = 10000)
     private String content;
 
-    @Column(name = "published", length = 1)
+    @Column(name = "published", nullable = false, length = 1)
     private boolean published;
 }

@@ -42,15 +42,14 @@
         <script type="text/javascript">
             $(function () {
                 editormd("editor", {
-                    height: "600px",
+                    height: "680px",
                     placeholder: "请开始你的表演～",
 
                     emoji: true,
                     tocm: true,
 
                     imageUpload: true,
-                    imageFormats: ["jpg", "jpeg", "gif", "png", "bmp"],
-                    imageUploadURL: "",
+                    imageUploadURL: "uploader/image",
 
                     toolbarIconsClass: {
                         "first-line-indent": "fa-long-arrow-right"
@@ -74,7 +73,7 @@
                     },
                     lang: {
                         toolbar: {
-                            "first-line-indent": "插入中文空格"
+                            "first-line-indent": "插入两个中文空格"
                         }
                     },
                     path: "editormd/lib/"
