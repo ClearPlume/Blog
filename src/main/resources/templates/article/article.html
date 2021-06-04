@@ -16,12 +16,17 @@
             <div class="content" style="width: 80%;">
                 <!-- main start -->
                 <div class="main">
-                    <div id="article"></div>
                     <form id="form-article" class="layui-form" th:action="@{/article/newArticle}" method="post">
                         <div class="layui-form-item">
                             <label>
-                                <input type="text" name="article-name" placeholder="请输入文章标题（5～30个字）" autocomplete="off"
-                                       class="layui-input layui-input-inline" style="width: 85%; margin-right: 23px">
+                                <input type="text" name="title" placeholder="文章标题（5~30个字）" autocomplete="off"
+                                       class="layui-input layui-input-inline" style="width: 30%; margin-right: 23px"
+                                       maxlength="30">
+                            </label>
+                            <label>
+                                <input type="text" name="description" placeholder="文章概述（5~55个字）" autocomplete="off"
+                                       class="layui-input layui-input-inline" style="width: 53%; margin-right: 23px"
+                                       maxlength="55">
                             </label>
                             <button id="btn-save" class="layui-btn layui-btn-radius layui-btn-primary" type="button">
                                 保存草稿
@@ -94,11 +99,30 @@
              * @param {boolean} isPublish 是否在提交文章时直接发布
              */
             function submit(isPublish) {
-                let article = $("#editor").children("textarea[name='editor-markdown-doc']");
-                let articleName = $(":input[name='article-name']");
+                let article = $("#editor").children("textarea[name='editor-markdown-doc']").val().trim();
+                let title = $(":input[name='title']").val().trim();
+                let description = $(":input[name='description']").val().trim();
 
-                if (article.val().trim() === "" || articleName.val().trim() === "") {
-                    layer.msg("<span style='color: red'>文章标题</span>和<span style='color: red'>内容</span>不可为空，请检查！", {
+                if (!checkStringLength(title, 5, 30)) {
+                    layer.msg("<span style='color: red'>文章标题</span>的长度应在5~30在之间，请检查！", {
+                        offset: "35%",
+                        icon: 2,
+                        anim: 6
+                    });
+                    return;
+                }
+
+                if (!checkStringLength(description, 5, 55)) {
+                    layer.msg("<span style='color: red'>文章概要</span>的长度应在5~55在之间，请检查！", {
+                        offset: "35%",
+                        icon: 2,
+                        anim: 6
+                    });
+                    return;
+                }
+
+                if (!checkStringLength(article, 0, 10000)) {
+                    layer.msg("<span style='color: red'>文章内容</span>的长度应在0~10000在之间，请检查！", {
                         offset: "35%",
                         icon: 2,
                         anim: 6
@@ -112,9 +136,7 @@
                 articleData.forEach(function (value) {
                     articleJSON += `"${value.name}": "${encodeURIComponent(value.value)}", `;
                 });
-                articleJSON += `"published": ${isPublish}`;
-
-                articleJSON += "}";
+                articleJSON += `"published": ${isPublish}}`;
 
                 $.ajax("article/newArticle", {
                     type: "post",
@@ -124,14 +146,24 @@
 
                     success: function (msg) {
                         if (msg.code === 200) {
-                            let article = msg.data;
-
-                            editormd.markdownToHTML("article", {
-                                markdown: decodeURIComponent(article.content),
-                            });
+                            location.href = "/";
                         }
                     }
                 });
+            }
+
+            /**
+             * 检测字符串长度是否符合要求
+             *
+             * @param {string} content 要检测的字符串
+             * @param {number} min 最小长度
+             * @param {number} max 最大长度
+             * @returns {boolean}
+             */
+            function checkStringLength(content, min, max) {
+                let length = content.length;
+
+                return length >= min && length <= max;
             }
         </script>
 

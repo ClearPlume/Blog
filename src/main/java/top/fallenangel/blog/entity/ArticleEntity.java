@@ -5,6 +5,7 @@ import lombok.Setter;
 import lombok.ToString;
 
 import javax.persistence.*;
+import java.util.Date;
 
 @Entity
 @Getter
@@ -24,9 +25,18 @@ public class ArticleEntity {
     @Column(name = "title", nullable = false, length = 30)
     private String title;
 
+    @Column(name = "description", nullable = false, length = 55)
+    private String description;
+
     @Column(name = "content", nullable = false, length = 10000)
     private String content;
 
     @Column(name = "published", nullable = false, length = 1)
     private boolean published;
+
+    @Column(name = "create_time", nullable = false)
+    private Date createTime;
+
+    @Column(name = "update_time", nullable = false)
+    private Date updateTime;
 }

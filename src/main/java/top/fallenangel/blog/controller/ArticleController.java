@@ -15,12 +15,24 @@ public class ArticleController {
 
     @GetMapping("")
     public String editor() {
-        return "article";
+        return "article/article";
     }
 
-    @PostMapping("newArticle")
     @ResponseBody
+    @PostMapping("newArticle")
     public ResultVO newArticle(@RequestBody ArticleDTO article) {
         return ResultVO.success(articleService.save(article));
+    }
+
+    @ResponseBody
+    @GetMapping({"allArticles/{page}", "allArticles"})
+    public ResultVO allArticles(@PathVariable(required = false) Integer page) {
+        if (page == null || page == 0) {
+            page = 0;
+        } else {
+            page--;
+        }
+
+        return ResultVO.success(articleService.list(page, 8));
     }
 }

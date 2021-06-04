@@ -26,6 +26,6 @@ public class SpecialEntity {
 
     @ToString.Exclude
     @org.hibernate.annotations.ForeignKey(name = "none")
-    @OneToMany(mappedBy = "special", cascade = {CascadeType.DETACH})
+    @OneToMany(mappedBy = "special", cascade = {CascadeType.DETACH, CascadeType.MERGE})
     private List<ArticleEntity> articles;
 }

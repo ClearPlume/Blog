@@ -23,148 +23,23 @@
             <div class="content">
                 <!-- main start -->
                 <div class="main">
-                    <div class="list">
-                        <article>
+                    <div class="list" style="height: 680px">
+                        <article th:each="article:${articles}">
                             <h1>
-                                <a class="title" href="javascript:void(0)" title="博客标题">
+                                <a class="title" href="javascript:void(0)" th:text="${article.title}">
                                     博客标题
                                 </a>
                             </h1>
-                            <p class="description">
+                            <p class="description" th:text="${article.description}">
                                 博客概要
                             </p>
                             <p>
-                                <a href="javascript:void(0)" title="Read More"><span>➥</span>Read More</a>
+                                <a href="javascript:void(0)" style="font-size: 8pt"><span>➥</span>Read More</a>
                             </p>
                             <p class="date">
-                                <span>posted @</span>
-                                <time>2021-02-20</time>
-                                <span>评论(0)</span>
-                            </p>
-                        </article>
-                        <article>
-                            <h1>
-                                <a class="title" href="javascript:void(0)" title="博客标题">
-                                    博客标题
-                                </a>
-                            </h1>
-                            <p class="description">
-                                博客概要
-                            </p>
-                            <p>
-                                <a href="javascript:void(0)" title="Read More"><span>➥</span>Read More</a>
-                            </p>
-                            <p class="date">
-                                <span>posted @</span>
-                                <time>2021-02-20</time>
-                                <span>评论(0)</span>
-                            </p>
-                        </article>
-                        <article>
-                            <h1>
-                                <a class="title" href="javascript:void(0)" title="博客标题">
-                                    博客标题
-                                </a>
-                            </h1>
-                            <p class="description">
-                                博客概要
-                            </p>
-                            <p>
-                                <a href="javascript:void(0)" title="Read More"><span>➥</span>Read More</a>
-                            </p>
-                            <p class="date">
-                                <span>posted @</span>
-                                <time>2021-02-20</time>
-                                <span>评论(0)</span>
-                            </p>
-                        </article>
-                        <article>
-                            <h1>
-                                <a class="title" href="javascript:void(0)" title="博客标题">
-                                    博客标题
-                                </a>
-                            </h1>
-                            <p class="description">
-                                博客概要
-                            </p>
-                            <p>
-                                <a href="javascript:void(0)" title="Read More"><span>➥</span>Read More</a>
-                            </p>
-                            <p class="date">
-                                <span>posted @</span>
-                                <time>2021-02-20</time>
-                                <span>评论(0)</span>
-                            </p>
-                        </article>
-                        <article>
-                            <h1>
-                                <a class="title" href="javascript:void(0)" title="博客标题">
-                                    博客标题
-                                </a>
-                            </h1>
-                            <p class="description">
-                                博客概要
-                            </p>
-                            <p>
-                                <a href="javascript:void(0)" title="Read More"><span>➥</span>Read More</a>
-                            </p>
-                            <p class="date">
-                                <span>posted @</span>
-                                <time>2021-02-20</time>
-                                <span>评论(0)</span>
-                            </p>
-                        </article>
-                        <article>
-                            <h1>
-                                <a class="title" href="javascript:void(0)" title="博客标题">
-                                    博客标题
-                                </a>
-                            </h1>
-                            <p class="description">
-                                博客概要
-                            </p>
-                            <p>
-                                <a href="javascript:void(0)" title="Read More"><span>➥</span>Read More</a>
-                            </p>
-                            <p class="date">
-                                <span>posted @</span>
-                                <time>2021-02-20</time>
-                                <span>评论(0)</span>
-                            </p>
-                        </article>
-                        <article>
-                            <h1>
-                                <a class="title" href="javascript:void(0)" title="博客标题">
-                                    博客标题
-                                </a>
-                            </h1>
-                            <p class="description">
-                                博客概要
-                            </p>
-                            <p>
-                                <a href="javascript:void(0)" title="Read More"><span>➥</span>Read More</a>
-                            </p>
-                            <p class="date">
-                                <span>posted @</span>
-                                <time>2021-02-20</time>
-                                <span>评论(0)</span>
-                            </p>
-                        </article>
-                        <article>
-                            <h1>
-                                <a class="title" href="javascript:void(0)" title="博客标题">
-                                    博客标题
-                                </a>
-                            </h1>
-                            <p class="description">
-                                博客概要
-                            </p>
-                            <p>
-                                <a href="javascript:void(0)" title="Read More"><span>➥</span>Read More</a>
-                            </p>
-                            <p class="date">
-                                <span>posted @</span>
-                                <time>2021-02-20</time>
+                                <time th:text="${#dates.format(article.updateTime, 'yyyy-MM-dd HH:mm:ss')}">
+                                    2021-02-20 16:35:00
+                                </time>
                                 <span>评论(0)</span>
                             </p>
                         </article>
@@ -217,10 +92,14 @@
 
                     laypage.render({
                         elem: 'article-page',
+                        count: Number("[[${articleCount}]]"),
                         limit: 8,
-                        count: 70,
-                        jump: function (obj) {
-                            console.log(`当前显示第 ${obj.curr} 页博客`);
+                        curr: Number("[[${page}]]"),
+
+                        jump: function (obj, first) {
+                            if (!first) {
+                                location.href = `/${obj.curr}`;
+                            }
                         }
                     });
                 });
