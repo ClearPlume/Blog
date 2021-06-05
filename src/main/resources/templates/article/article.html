@@ -20,13 +20,13 @@
                         <div class="layui-form-item">
                             <label>
                                 <input type="text" name="title" placeholder="文章标题（5~30个字）" autocomplete="off"
-                                       class="layui-input layui-input-inline" style="width: 30%; margin-right: 23px"
-                                       maxlength="30">
+                                       class="layui-input layui-input-inline layext-text-tool" maxlength="30"
+                                       style="width: 30%; margin-right: 23px">
                             </label>
                             <label>
                                 <input type="text" name="description" placeholder="文章概述（5~55个字）" autocomplete="off"
-                                       class="layui-input layui-input-inline" style="width: 53%; margin-right: 23px"
-                                       maxlength="55">
+                                       class="layui-input layui-input-inline layext-text-tool" maxlength="55"
+                                       style="width: 53%; margin-right: 23px">
                             </label>
                             <button id="btn-save" class="layui-btn layui-btn-radius layui-btn-primary" type="button">
                                 保存草稿
@@ -48,7 +48,7 @@
             $(function () {
                 editormd("editor", {
                     height: "680px",
-                    placeholder: "请开始你的表演～",
+                    placeholder: "请开始你的表演~",
 
                     emoji: true,
                     tocm: true,
@@ -82,6 +82,20 @@
                         }
                     },
                     path: "editormd/lib/"
+                });
+
+                layui.config({base: 'layui/lay/extends/'}).extend({textool: 'textool'}).use(['textool'], function () {
+                    let $ = layui.$, textool = layui.textool;
+                    textool.init({
+                        // 工具条是否位于输入框内部，默认位于外部
+                        inner: true,
+                        // 工具按钮提示类型，默认为 'title' 属性，可选 'laytips'，使用 layer 组件的吸附提示， 其他值不显示提示
+                        tipType: 'laytips',
+                        // 对齐方向，默认右对齐，可选左对齐 'left'
+                        align: 'left',
+                        // 启用指定工具模块，默认依次为字数统计、复制内容、重置内容、清空内容，按数组顺序显示
+                        tools: ['count', 'clear']
+                    });
                 });
 
                 $("#btn-save").click(function () {
